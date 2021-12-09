@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 14:57:54 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 15:31:59 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@
 int main(int argc, char **argv)
 {
 	t_data data;
+	int line_count;
+	char **map;
 	
 	if (argc == 2)
 	{
-		int line_count = retrieveLineNumber(argv[1]);
-		char **map = createMap(argv[1], line_count);
+		if (check_extension(argv[1]) == FAILURE)
+			error_msg("Argument is not a correct .ber file.\n");
+		line_count = retrieveLineNumber(argv[1]);
+		map = createMap(argv[1], line_count);
 		printMap(line_count, map);
 
 

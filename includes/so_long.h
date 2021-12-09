@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 14:59:23 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 15:57:17 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ char**	createMap(char *path, int line_count);
 /* ******** printmap.c ********/
 void	printMap(int line_count, char **map);
 
+/*
+**
+**  01_ERRORS
+**
+*/
+/* ******** error_msg.c ********/
+void	error_msg(char *str);
+
+/* ******** check_ber.c ********/
+int	check_extension(char *path);
 /*
 **
 **  02_GRAPHICS
