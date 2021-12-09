@@ -6,13 +6,15 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/03 17:50:26 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/09 09:27:15 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # /* ~~~~~~ SOURCES ~~~~~~ */
 SRCS_DIR = ./srcs/
-SRCS = 
+SRCS = 02_Graphics/render.c \
+	02_Graphics/pixel_utils.c \
+	03_Events/handlers.c \
 
 
 OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
@@ -29,7 +31,7 @@ MLX_PATH = ${MLX_DIR}/libmlx.a
 
 # /* ~~~~~~~ COMPILING INFO ~~~~~~~ */
 CC = clang
-CFLAGS = -Wall -Werror -Wextra # -g -MMD
+CFLAGS = -Wall -Werror -Wextra -g # -MMD
 MFLAGS = -ldl -lmlx -L${MLX_DIR} -lm -lXext -lX11 -Imlx $(MLX_PATH)
 IFLAGS:= -I ./includes
 LFLAGS:= -L $(LIBFT_DIR) -lft
