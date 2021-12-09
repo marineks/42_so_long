@@ -6,16 +6,17 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/09 12:02:51 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/09 14:54:14 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # /* ~~~~~~ SOURCES ~~~~~~ */
 SRCS_DIR = ./srcs/
-SRCS = 02_Graphics/render.c \
+SRCS = 00_Init_Parsing/create_map.c \
+	00_Init_Parsing/printmap.c \
+	02_Graphics/render.c \
 	02_Graphics/pixel_utils.c \
 	03_Events/handlers.c \
-
 
 OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
 

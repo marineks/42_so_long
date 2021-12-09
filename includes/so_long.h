@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 13:58:51 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:59:23 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,18 @@ typedef struct s_rect
 	int height;
 	int color;
 }	t_rect;
+
+/*
+**
+**  00_INIT_PARSING
+**
+*/
+/* ******** create_map.c ********/
+int		retrieveLineNumber(char *path);
+char**	createMap(char *path, int line_count);
+
+/* ******** printmap.c ********/
+void	printMap(int line_count, char **map);
 
 /*
 **
