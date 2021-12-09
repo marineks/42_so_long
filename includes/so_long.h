@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 15:57:17 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:19:29 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "../libft/libft.h"
+#include <stdio.h>
 
 # define RED_PIXEL 0xFF0000
 # define BLUE_PIXEL 0x9CC2F7
@@ -66,7 +67,8 @@ typedef struct s_rect
 */
 /* ******** create_map.c ********/
 int		retrieveLineNumber(char *path);
-char**	createMap(char *path, int line_count);
+char 	**createMap(char *path, int line_count);
+char 	**ft_free(char **tab);
 
 /* ******** printmap.c ********/
 void	printMap(int line_count, char **map);
@@ -80,7 +82,11 @@ void	printMap(int line_count, char **map);
 void	error_msg(char *str);
 
 /* ******** check_ber.c ********/
-int	check_extension(char *path);
+int		check_extension(char *path);
+
+int		checkMap(int line_count, char **map);
+int		checkChars(char **map);
+int		checkEdges(int line_count, char **map);
 /*
 **
 **  02_GRAPHICS

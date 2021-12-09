@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 15:31:59 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 17:09:20 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		line_count = retrieveLineNumber(argv[1]);
 		map = createMap(argv[1], line_count);
 		printMap(line_count, map);
-
+		checkMap(line_count, map);
 
 		
 		/* ==========================*/

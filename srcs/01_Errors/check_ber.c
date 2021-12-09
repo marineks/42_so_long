@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 15:22:18 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 18:26:05 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:35:44 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,5 @@ int	check_extension(char *path)
 	else
 		return (SUCCESS);
 }
+
+// TO DO : PENSER AU CAS MKDIR .BER

@@ -6,7 +6,7 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/09 15:30:59 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/09 18:18:35 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 SRCS_DIR = ./srcs/
 SRCS = 00_Init_Parsing/create_map.c \
 	01_Errors/check_ber.c \
+	01_Errors/check_map.c \
 	01_Errors/error_msg.c \
 	00_Init_Parsing/print_map.c \
 	02_Graphics/render.c \
