@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 10:47:31 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:58:51 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 #include <X11/X.h>
 #include <stdio.h>
 #include "../mlx_linux/mlx.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "get_next_line.h"
+#include "../libft/libft.h"
 
 # define RED_PIXEL 0xFF0000
 # define BLUE_PIXEL 0x9CC2F7
@@ -27,7 +32,6 @@
 # define ERROR -1
 # define FAILURE 1
 # define SUCCESS 0
-
 
 typedef struct s_img
 {

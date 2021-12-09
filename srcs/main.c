@@ -6,16 +6,107 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 11:05:19 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:33:00 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../includes/get_next_line.h"
+#include <stdio.h>
 
-int main(void)
+// static void	*ft_free(char **tab)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	while (tab[i])
+// 	{
+// 		free(tab[i]);
+// 		i++;
+// 	}
+// 	free(tab);
+// 	tab = NULL;
+// 	return (tab);
+// }
+
+int main(int argc, char **argv)
 {
 	t_data data;
 	
+	// Récupérer le nombre de lignes dans le fichier .ber
+	int		fd;
+    char    *line;
+	int line_count;
+	
+	line_count = 0;
+		fd = open(argv[1], O_RDONLY);
+	if (argc == 2)
+	{
+		
+		if (fd < 0)
+			printf("\e[31mError: open failed\e[0m\n");
+		else
+		{
+			while ((line = get_next_line(fd)) != NULL)
+			{
+				line_count++;
+				free(line);
+			}
+			close(fd);
+		}
+		printf("Line count: %d\n", line_count);
+	}
+
+	// Malloc le double tableau
+	char **map;
+	map = ft_calloc(line_count + 1, sizeof(char *));
+	if (!map)
+		return (NULL);
+
+	// Récupérer la taille de chaque ligne et malloc lesdites lignes
+	int row;
+	size_t column;
+	int i;
+	
+	i = row = column = 0;
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		printf("\e[31mError: open failed\e[0m\n");
+	else
+	{
+		while ((line = get_next_line(fd)) != NULL)
+		{
+			map[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
+			if (!map[row])
+				return (ft_free(map));
+			while (line[i] != '\0')
+			{
+				map[row][column] = line[i];
+				column++;
+				i++;
+			}
+			map[row][column] = '\0';
+			column = 0;
+			i = 0;
+			row++;
+			
+			free(line);
+		}
+		map[row] = NULL;
+		close(fd);
+	}
+	
+
+	void	printMap(int line_count, char **map)
+	{
+		
+		for (int row = 0; row < line_count; row++)
+			printf("map : %s\n", map[row]);
+	}
+
+
+	/* PARTIE MLX INITIALISATION */
+
 	// establishes a connection to the correct graphical system and will return a void * which holds the location of our current MLX instance
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
@@ -29,12 +120,13 @@ int main(void)
 		return (ERROR);
 	}
 
-	// char	*relative_path = "../assets/test.xpm";
-	int		img_width = 60;
-	int		img_height = 60;
+	char	*relative_path = "assets/test.xpm"; // par rapport ou est l'executable
+	
+	int		img_width = 20;
+	int		img_height = 20;
 	/* mlx_xpm_file_to_image() creates a new image in memory, using the specified xpm_data. 
 		   It returns a void * identifier needed to manipulate this image later. */
-	data.img.mlx_img = mlx_xpm_file_to_image(data.mlx_ptr, "/mnt/nfs/homes/msanjuan/Documents/Projets_Github/42_so_long/assets/test.xpm", &img_width, &img_height);
+	data.img.mlx_img = mlx_xpm_file_to_image(data.mlx_ptr, relative_path, &img_width, &img_height);
 
 	// is triggered when there's no event processed
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
@@ -60,3 +152,25 @@ int main(void)
 	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, 0, 0);
 	// data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bits_per_pixel,
 			// &data.img.line_length, &data.img.endian);
+
+
+
+	// fd = open(argv[1], O_RDONLY);
+	// 	if (fd < 0)
+	// 		printf("\e[31mError: open failed\e[0m\n");
+	// 	else
+	// 	{
+	// 		while ((line = get_next_line(fd)) != NULL)
+	// 		{
+	// 			// printf("\e[32mLine:\e[0m [%s]\n", line);
+	// 			line_count++;
+	// 			free(line);
+	// 		}
+	// 		if (!line) 
+	// 		{
+	// 			// printf("\e[35mCall after EOF was reached:\e[1;31m [%s]\n", line);
+	// 			free(line);
+	// 		}
+	// 		// printf("\e[0m\n");
+	// 		close(fd);
+	// 	}

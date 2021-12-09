@@ -6,7 +6,7 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/09 09:27:15 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/09 12:02:51 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,13 @@ SRCS = 02_Graphics/render.c \
 
 
 OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
+
+# /* ~~~~~~~ INCLUDING GNL ~~~~~~~ */
+GNL_DIR = ./get_next_line/
+GNL = get_next_line.c \
+	get_next_line_utils.c \
+
+GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 
 # /* ~~~~~~~ INCLUDING LIBFT ~~~~~~~ */
 LIBFT_DIR = libft
@@ -58,11 +65,11 @@ EOC:="\033[0;0m"
 
 all:	${NAME}		
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(GNL_OBJS)
 	@make -C ${MLX_DIR}
 	@cd $(LIBFT_DIR) && $(MAKE)
 	@echo $(CYAN) " - Compiling $@" $(RED)
-	@$(CC) $(CFLAGS) $(OBJS) $(SRCS_DIR)main.c $(IFLAGS) $(LFLAGS) -o $(NAME) $(MFLAGS) 
+	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(SRCS_DIR)main.c $(IFLAGS) $(LFLAGS) -o $(NAME) $(MFLAGS) 
 	@echo $(GREEN) "[OK COMPILED]" $(EOC)
 
 # $(BONUS): $(OBJS) $(B_OBJS)
