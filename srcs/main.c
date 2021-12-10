@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 19:08:15 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:07:06 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ int main(int argc, char **argv)
 		initMap(&data);
 		printMap(&data);
 		checkMap(&data);
-		// parseMap(&data);
 		
-		/* ==========================*/
-		/* PARTIE MLX INITIALISATION */
-		/* ==========================*/
+		/*  ============================= */
+		/*  # PARTIE MLX INITIALISATION # */
+		/*  ============================  */
 
 		// establishes a connection to the correct graphical system and will return a void * which holds the location of our current MLX instance
 		data.mlx_ptr = mlx_init();
@@ -41,7 +40,7 @@ int main(int argc, char **argv)
 			return (ERROR);
 			
 		// will return a pointer to the window just created
-		data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Mon potit jeu");
+		data.win_ptr = mlx_new_window(data.mlx_ptr, data.map.win_width, data.map.win_height, "Mon potit jeu");
 		if (data.win_ptr == NULL)
 		{
 			free(data.win_ptr);

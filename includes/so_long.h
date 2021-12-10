@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 19:28:32 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:08:47 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 #  define O_DIRECTORY 00200000        /* must be a directory */
 # endif
 
-# define WINDOW_WIDTH 350
-# define WINDOW_HEIGHT 200
 # define ERROR -1
 # define FAILURE 1
 # define SUCCESS 0
@@ -55,6 +53,8 @@ typedef struct s_map
 	int 	count_c;
 	char 	*path;
 	char	**map;
+	int		win_height;
+	int		win_width;
 
 }				t_map;
 
