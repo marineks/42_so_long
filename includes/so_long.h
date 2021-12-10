@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 15:05:35 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:30:36 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
+# ifndef O_DIRECTORY
+#  define O_DIRECTORY 00200000        /* must be a directory */
+# endif
 # define RED_PIXEL 0xFF0000
 # define BLUE_PIXEL 0x9CC2F7
 # define WINDOW_WIDTH 600

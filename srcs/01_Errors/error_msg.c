@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 15:28:30 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 17:43:29 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:18:55 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	error_msg(char *str)
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd(RESET, 2);
-	exit(0);
+	exit(1);
 }
