@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 17:09:20 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:27:02 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 int main(int argc, char **argv)
 {
 	t_data data;
-	int line_count;
-	char **map;
+	// int line_count;
+	// char **map;
 	
 	if (argc == 2)
 	{
 		if (check_extension(argv[1]) == FAILURE)
-			error_msg("Argument is not a correct .ber file.\n");
-		line_count = retrieveLineNumber(argv[1]);
-		map = createMap(argv[1], line_count);
-		printMap(line_count, map);
-		checkMap(line_count, map);
+			error_msg("Argument is not a correct .ber file.\n",& data);
+		data.map.line_count = retrieveLineNumber(argv[1]);
+		createMap(argv[1], &data);
+		printMap(&data);
+		checkMap(&data);
 
 		
 		/* ==========================*/
@@ -69,6 +69,8 @@ int main(int argc, char **argv)
 		mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 		mlx_destroy_display(data.mlx_ptr);
 		free(data.mlx_ptr);
+		if (data.map.map)
+			ft_free(data.map.map);
 	}
 }
 	

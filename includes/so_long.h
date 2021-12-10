@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 15:30:36 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:27:17 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@
 # define ERROR -1
 # define FAILURE 1
 # define SUCCESS 0
+# define ERROTHER "At least one character of the map is not valid.\n"
+# define ERRCHARS "One of the characters \"0, 1, P, C, E\" is missing.\n"
+# define ERRREC "The map is not a rectangle.\n"
+# define ERREDGES "The edges of the map are invalid (must be walls -1-)\n"
+
+typedef struct s_map
+{
+	int 	fd;
+	int		line_count;
+	size_t	line_len;
+	int 	count_p;
+	int 	count_e;
+	int 	count_c;
+	char 	*path;
+	char	**map;
+}				t_map;
 
 typedef struct s_img
 {
@@ -51,6 +67,7 @@ typedef struct	s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	t_map	map;
 	
 }				t_data;
 
@@ -61,7 +78,7 @@ typedef struct s_rect
 	int width;
 	int height;
 	int color;
-}	t_rect;
+}				t_rect;
 
 /*
 **
@@ -70,11 +87,11 @@ typedef struct s_rect
 */
 /* ******** create_map.c ********/
 int		retrieveLineNumber(char *path);
-char 	**createMap(char *path, int line_count);
-char 	**ft_free(char **tab);
+void	createMap(char *path, t_data *data);
+void	ft_free(char **tab);
 
 /* ******** printmap.c ********/
-void	printMap(int line_count, char **map);
+void	printMap(t_data *data);
 
 /*
 **
@@ -82,13 +99,14 @@ void	printMap(int line_count, char **map);
 **
 */
 /* ******** error_msg.c ********/
-void	error_msg(char *str);
+void	error_msg(char *str, t_data *data);
 
 /* ******** check_ber.c ********/
 int		check_extension(char *path);
 
-int		checkMap(int line_count, char **map);
-int		checkRectangle(char **map);
+int		checkMap(t_data *data);
+int		checkChars(t_data *data);
+int		checkRectangle(t_data *data);
 int		checkEdges(int line_count, char **map);
 int 	checkTopBot(int row, char **map);
 /*

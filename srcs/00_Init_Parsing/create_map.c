@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 14:42:52 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 15:00:47 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:51:03 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/get_next_line.h"
 #include <stdio.h>
 
-char **ft_free(char **tab)
+void ft_free(char **tab)
 {
 	size_t	i;
 
@@ -26,7 +26,7 @@ char **ft_free(char **tab)
 	}
 	free(tab);
 	tab = NULL;
-	return (NULL);
+	return ;
 }
 
 // Récupérer le nombre de lignes dans le fichier .ber
@@ -54,43 +54,41 @@ int	retrieveLineNumber(char *path)
 }
 	
 
-char**	createMap(char *path, int line_count)
+void	createMap(char *path, t_data *data)
 {
-	char **map;
 	char *line;
 	int row;
 	int i;
-	int fd;
 	size_t column;
 
+	data->map.path = path;
 	// Malloc le double tableau
-	map = ft_calloc(line_count + 1, sizeof(char *));
-	if (!map)
-		return (NULL);
+	data->map.map = ft_calloc(data->map.line_count + 1, sizeof(char *));
+	if (!(data->map.map))
+		return ;
 
 	// Récupérer la taille de chaque ligne et malloc lesdites lignes
 	i = row = column = 0;
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	data->map.fd = open(path, O_RDONLY);
+	if (data->map.fd < 0)
 		printf("\e[31mError: open failed\e[0m\n");
 	else
 	{
-		while ((line = get_next_line(fd)) != NULL)
+		while ((line = get_next_line(data->map.fd)) != NULL)
 		{
-			map[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
-			if (!map[row])
-				return (ft_free(map));
+			data->map.map[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
+			if (!data->map.map[row])
+				return (ft_free(data->map.map));
 			while (line[i] != '\0')
-				map[row][column++] = line[i++];
-			map[row++][column] = '\0';
+				data->map.map[row][column++] = line[i++];
+			data->map.map[row++][column] = '\0';
 			column = 0;
 			i = 0;
 			free(line);
 		}
-		map[row] = NULL;
-		close(fd);
+		data->map.map[row] = NULL;
+		close(data->map.fd);
 	}
-	return (map);
 }
 	
 	
