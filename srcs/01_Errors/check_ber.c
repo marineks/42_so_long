@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 15:22:18 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 15:38:30 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:04:36 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_extension(char *path)
 	int fd;
 
 	len = ft_strlen(path);
-	if (open(path, O_DIRECTORY))
+	if (open(path, O_DIRECTORY) >= 0)
 	{
 		fd = open(path, O_DIRECTORY);
 		close(fd);
