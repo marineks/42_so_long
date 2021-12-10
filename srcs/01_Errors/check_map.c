@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:52:46 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 17:14:11 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:34:12 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ int	checkChars(t_data *data)
 	int i;
 	int j;
 	
-	data->map.count_p = 0;
-	data->map.count_e = 0;
-	data->map.count_c = 0;
 	i = 0;
 	j = 0;
 	while (data->map.map[i])
@@ -114,13 +111,10 @@ int	checkMap(t_data *data)
 		j = 0;
 		i++;
 	}
-	/* Vérifier que les chars 0, 1, E, C, P sont presents */
 	if (checkChars(data) == FAILURE)
 		error_msg(ERRCHARS, data);
-	/* Vérifier que c'est bien un carré ou rectangle. */
 	if (checkRectangle(data) == FAILURE)
 		error_msg(ERRREC, data);
-	/* Vérifier que les bordures soient bien des 1 */
 	if (checkEdges(data->map.line_count - 1, data->map.map) == FAILURE)
 		error_msg(ERREDGES, data);
 	return (SUCCESS);

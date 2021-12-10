@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 17:27:02 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:08:15 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int main(int argc, char **argv)
 			error_msg("Argument is not a correct .ber file.\n",& data);
 		data.map.line_count = retrieveLineNumber(argv[1]);
 		createMap(argv[1], &data);
+		initMap(&data);
 		printMap(&data);
 		checkMap(&data);
-
+		// parseMap(&data);
 		
 		/* ==========================*/
 		/* PARTIE MLX INITIALISATION */
@@ -40,20 +41,12 @@ int main(int argc, char **argv)
 			return (ERROR);
 			
 		// will return a pointer to the window just created
-		data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
+		data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Mon potit jeu");
 		if (data.win_ptr == NULL)
 		{
 			free(data.win_ptr);
 			return (ERROR);
 		}
-
-		char	*relative_path = "assets/test.xpm"; // par rapport ou est l'executable
-		
-		int		img_width = 20;
-		int		img_height = 20;
-		/* mlx_xpm_file_to_image() creates a new image in memory, using the specified xpm_data. 
-			It returns a void * identifier needed to manipulate this image later. */
-		data.img.mlx_img = mlx_xpm_file_to_image(data.mlx_ptr, relative_path, &img_width, &img_height);
 
 		// is triggered when there's no event processed
 		mlx_loop_hook(data.mlx_ptr, &render, &data);

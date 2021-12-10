@@ -6,13 +6,12 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 14:42:52 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 15:51:03 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:38:55 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 #include "../../includes/get_next_line.h"
-#include <stdio.h>
 
 void ft_free(char **tab)
 {
