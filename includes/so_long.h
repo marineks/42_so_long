@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 18:19:29 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:05:35 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ void	error_msg(char *str);
 int		check_extension(char *path);
 
 int		checkMap(int line_count, char **map);
-int		checkChars(char **map);
+int		checkRectangle(char **map);
 int		checkEdges(int line_count, char **map);
+int 	checkTopBot(int row, char **map);
 /*
 **
 **  02_GRAPHICS

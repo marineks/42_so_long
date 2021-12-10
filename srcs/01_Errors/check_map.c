@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:52:46 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/09 19:14:48 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:05:27 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,31 @@ int	checkChars(char **map)
 		return (SUCCESS);
 }
 
-int	checkEdges(int line_count, char **map)
+int checkTopBot(int row, char **map)
 {
-	size_t len;
 	int i;
 
 	i = 0;
-	len = ft_strlen(map[0]);
-	// vérifier premiere ligne
-	while (map[0][i] != '\0')
+	while (map[row][i] && map[row][i] != '\n')
 	{
-		if (map[0][i] != '1')
+		if (map[row][i] != '1')
 			return (FAILURE);
 		i++;
 	}
-	i = 0;
-	// vérifier derniere ligne
-	while (map[line_count - 1][i] != '\0')
-	{
-		if (map[line_count][i] != '1')
-			return (FAILURE);
-		i++;
-	}
-	// vérifier cotés
+	return (SUCCESS);
+}
+
+int	checkEdges(int line_count, char **map)
+{
+	int i;
+
 	i = 1;
-	while (i < line_count - 2)
+	if (checkTopBot(0, map) == FAILURE 
+		|| checkTopBot(line_count, map) == FAILURE)
+		return (FAILURE);
+	while (i < line_count) // vérifier cotés
 	{
-		if (map[i][0] != '1' || map[i][len - 1] != '1')
+		if (map[i][0] != '1' || map[i][ft_strlen(map[0]) - 2] != '1') 
 			return (FAILURE);
 		i++;
 	}
@@ -82,20 +80,16 @@ int	checkRectangle(char **map)
 {
 	int i;
 	size_t j;
+	size_t line_len;
 
 	i = 0;
 	j = 0;
-	while (map[i] != NULL)
-	{
-		while (map[i][j] != '\n' || map[i][j])
-		{
-			
-			// if (i == '\n')
-			// 	j--;
+	line_len = ft_strlen(map[i]) - 1;
+	while (map[i])
+	{		
+		while (map[i][j] && map[i][j] != '\n')
 			j++;
-		}
-		// printf("j : %zu | ft_strlen(map[i]) : %zu\n", j, ft_strlen(map[i]));
-		if (j != ft_strlen(map[i]))
+		if (j != line_len)
 			return (FAILURE);
 		j = 0;
 		i++;
@@ -107,32 +101,29 @@ int	checkMap(int line_count, char **map)
 {
 	int i;
 	size_t j;
-	size_t len;
 	
 	i = 0;
 	j = 0;
-	len = ft_strlen(map[i]);
 	while (map[i])
 	{	
-		while (j < len - 1)
+		while (j < ft_strlen(map[i]) - 1)
 		{
 			/* Vérifier qu'il n'y a pas d'autres chars que les 0, 1, E, C, P */
-			/* Vérifier que les chars 0, 1, E, C, P sont presents */
-			printf("Char : %c\n", map[i][j]);
 			if (ft_strchr("01CEP", map[i][j]) == NULL)
 			{
 				ft_free(map);
 				error_msg("At least one character of the map is not valid.\n");
 			}
-			else if (checkChars(map) == FAILURE)
-			{
-				ft_free(map);
-				error_msg("One of the characters \"0, 1, P, C, E\" is missing.\n");
-			}
 			j++;
 		}
 		j = 0;
 		i++;
+	}
+	/* Vérifier que les chars 0, 1, E, C, P sont presents */
+	if (checkChars(map) == FAILURE)
+	{
+		ft_free(map);
+		error_msg("One of the characters \"0, 1, P, C, E\" is missing.\n");
 	}
 	/* Vérifier que c'est bien un carré ou rectangle. */
 	if (checkRectangle(map) == FAILURE)
@@ -141,7 +132,7 @@ int	checkMap(int line_count, char **map)
 		error_msg("The map is not a rectangle.\n");
 	}
 	/* Vérifier que les bordures soient bien des 1 */
-	if (checkEdges(line_count, map) == FAILURE)
+	if (checkEdges(line_count - 1, map) == FAILURE)
 	{
 		ft_free(map);
 		error_msg("The edges of the map are invalid (must be walls -1-)\n");
