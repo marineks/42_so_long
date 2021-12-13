@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/13 17:29:11 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/13 20:29:58 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int main(int argc, char **argv)
 		// printMap(&data);
 		checkMap(&data);
 	
-		/*  ============================= */
-		/*  # PARTIE MLX INITIALISATION # */
-		/*  ============================  */
-
+	
 		// establishes a connection to the correct graphical system and will return a void * which holds the location of our current MLX instance
 		data.mlx = mlx_init();
 		if (data.mlx == NULL)
@@ -56,9 +53,10 @@ int main(int argc, char **argv)
 		mlx_loop_hook(data.mlx, &render, &data);
 		
 		// to get the proper events
-		mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data); 
+		mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
+		// mlx_hook(data.win, ButtonRelease, ButtonReleaseMask, &handle_btnrealease, &data); 
 		// // mlx_hook(data.win, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
-		
+		mlx_hook(data.win, ClientMessage, LeaveWindowMask, &handle_btnrealease, &data);
 		//initiates the window rendering
 		mlx_loop(data.mlx);
 		

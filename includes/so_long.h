@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/13 17:28:32 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/13 20:25:30 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,7 @@ void	render_background(t_img *img, int color);
 */
 /* ******** Handlers.c ********/
 int		handle_keypress(int keysym, t_data *data);
+
+int		handle_btnrealease(t_data *data);
 
 #endif
