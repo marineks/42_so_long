@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 20:07:06 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:29:11 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 int main(int argc, char **argv)
 {
 	t_data data;
-	// int line_count;
-	// char **map;
 	
 	if (argc == 2)
 	{
@@ -27,40 +25,51 @@ int main(int argc, char **argv)
 		data.map.line_count = retrieveLineNumber(argv[1]);
 		createMap(argv[1], &data);
 		initMap(&data);
-		printMap(&data);
+		// printMap(&data);
 		checkMap(&data);
-		
+	
 		/*  ============================= */
 		/*  # PARTIE MLX INITIALISATION # */
 		/*  ============================  */
 
 		// establishes a connection to the correct graphical system and will return a void * which holds the location of our current MLX instance
-		data.mlx_ptr = mlx_init();
-		if (data.mlx_ptr == NULL)
+		data.mlx = mlx_init();
+		if (data.mlx == NULL)
 			return (ERROR);
 			
 		// will return a pointer to the window just created
-		data.win_ptr = mlx_new_window(data.mlx_ptr, data.map.win_width, data.map.win_height, "Mon potit jeu");
-		if (data.win_ptr == NULL)
+		data.win = mlx_new_window(data.mlx, data.map.win_width, data.map.win_height, "Mon potit jeu");
+		if (data.win == NULL)
 		{
-			free(data.win_ptr);
+			free(data.win);
 			return (ERROR);
 		}
 
+
+		data.img.wall = mlx_xpm_file_to_image(data.mlx, WALL, &data.img.width, &data.img.height);
+		data.img.ground = mlx_xpm_file_to_image(data.mlx, GROUND, &data.img.width, &data.img.height);
+		data.img.exit = mlx_xpm_file_to_image(data.mlx, EXIT, &data.img.width, &data.img.height);
+		data.img.coin = mlx_xpm_file_to_image(data.mlx, COIN, &data.img.width, &data.img.height);
+		data.img.player = mlx_xpm_file_to_image(data.mlx, PLAYER, &data.img.width, &data.img.height);
+
 		// is triggered when there's no event processed
-		mlx_loop_hook(data.mlx_ptr, &render, &data);
+		mlx_loop_hook(data.mlx, &render, &data);
 		
 		// to get the proper events
-		mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data); 
-		// // mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
+		mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data); 
+		// // mlx_hook(data.win, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 		
 		//initiates the window rendering
-		mlx_loop(data.mlx_ptr);
+		mlx_loop(data.mlx);
 		
 		// We must detroy the display (which basically refers to the connexion identifier used to communicate with the X Server).
-		mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-		mlx_destroy_display(data.mlx_ptr);
-		free(data.mlx_ptr);
+		mlx_destroy_image(data.mlx, data.img.wall);
+		mlx_destroy_image(data.mlx, data.img.ground);
+		mlx_destroy_image(data.mlx, data.img.player);
+		mlx_destroy_image(data.mlx, data.img.exit);
+		mlx_destroy_image(data.mlx, data.img.coin);
+		mlx_destroy_display(data.mlx);
+		free(data.mlx);
 		if (data.map.map)
 			ft_free(data.map.map);
 	}
@@ -71,7 +80,7 @@ int main(int argc, char **argv)
 	// img.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// my_mlx_pixel_put(&img, 5, 5, RED_PIXEL);
-	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, 0, 0);
+	// mlx_put_image_to_window(data.mlx_ptr, data.win, img.img, 0, 0);
 	// data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bits_per_pixel,
 			// &data.img.line_length, &data.img.endian);
 

@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/10 20:08:47 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:28:32 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@
 # define ERROR -1
 # define FAILURE 1
 # define SUCCESS 0
+// # define IMG_W 48
+// # define IMG_H 48
 # define PLAYER "assets/player.xpm"
 # define EXIT "assets/exit.xpm"
-# define COLLECTIBLE "assets/collectible.xpm"
+# define COIN "assets/collectible.xpm"
 # define WALL "assets/wall.xpm"
 # define GROUND "assets/ground.xpm"
 # define ERROTHER "At least one character of the map is not valid.\n"
@@ -61,6 +63,13 @@ typedef struct s_map
 typedef struct s_img
 {
 	void	*mlx_img; // refers to the address the func mlx_new_image returns
+	int		width;
+	int		height;
+	void	*wall;
+	void	*exit;
+	void	*ground;
+	void	*player;
+	void	*coin;
 	char	*addr; // index = line_len * y + x * (bpp / 8)
 	int		bits_per_pixel; 
 	int		line_length; // amount of bytes taken by one row of our image. = image_width * (bpp / 8)
@@ -69,8 +78,8 @@ typedef struct s_img
 
 typedef struct	s_data 
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void	*mlx;
+	void	*win;
 	t_img	img;
 	t_map	map;
 	
