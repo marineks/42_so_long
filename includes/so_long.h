@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/13 20:25:30 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/14 08:50:12 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@
 #include <X11/keysym.h>
 #include <X11/X.h>
 #include <stdio.h>
-#include "../mlx_linux/mlx.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "../libft/libft.h"
-#include <stdio.h>
+#include "../mlx_linux/mlx.h"
 
 # ifndef O_DIRECTORY
 #  define O_DIRECTORY 00200000        /* must be a directory */
@@ -35,6 +34,14 @@
 # define SUCCESS 0
 // # define IMG_W 48
 // # define IMG_H 48
+# define ARROW_TOP 65362
+# define ARROW_BOT 65364
+# define ARROW_LEFT 65363
+# define ARROW_RIGHT 65361
+# define A 97
+# define D 100
+# define S 115
+# define W 119
 # define PLAYER "assets/player.xpm"
 # define EXIT "assets/exit.xpm"
 # define COIN "assets/collectible.xpm"
@@ -57,6 +64,8 @@ typedef struct s_map
 	char	**map;
 	int		win_height;
 	int		win_width;
+	int		p_i;
+	int		p_j;
 
 }				t_map;
 
