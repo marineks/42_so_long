@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/13 20:29:58 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:02:58 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int main(int argc, char **argv)
 		// mlx_hook(data.win, ButtonRelease, ButtonReleaseMask, &handle_btnrealease, &data); 
 		// // mlx_hook(data.win, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 		mlx_hook(data.win, ClientMessage, LeaveWindowMask, &handle_btnrealease, &data);
+		mlx_hook(data.win, Expose, ExposureMask, &handle_resize, &data);
 		//initiates the window rendering
 		mlx_loop(data.mlx);
 		

@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 08:50:12 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:35:40 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@
 // # define IMG_H 48
 # define ARROW_TOP 65362
 # define ARROW_BOT 65364
-# define ARROW_LEFT 65363
-# define ARROW_RIGHT 65361
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
 # define A 97
 # define D 100
 # define S 115
 # define W 119
-# define PLAYER "assets/player.xpm"
+# define PLAYER "assets/maskdude.xpm"
 # define EXIT "assets/exit.xpm"
 # define COIN "assets/collectible.xpm"
 # define WALL "assets/wall.xpm"
@@ -147,7 +147,7 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 /* ******** Render.c ********/
 int		render(t_data *data);
 void	render_background(t_img *img, int color);
-
+int		checkCollision(t_data *data, char direction);
 
 /*
 **
@@ -156,7 +156,7 @@ void	render_background(t_img *img, int color);
 */
 /* ******** Handlers.c ********/
 int		handle_keypress(int keysym, t_data *data);
-
+int		handle_resize(t_data *data);
 int		handle_btnrealease(t_data *data);
 
 #endif

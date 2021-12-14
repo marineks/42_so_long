@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:10:12 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/13 17:20:16 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:54:34 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 
 int	render(t_data *data)
 {
-	int 	i;
+	int 	i; // [y]
 	int 	j;
-	int		w;
+	int		w; // [x] 
 
 	
 	if (data->win == NULL) /* if window has been destroyed, we don't want to put the pixel ! */
