@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:16:56 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 18:09:53 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/14 18:25:18 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	movePlayer(t_data *data, char direction)
 {
 	if (checkCollision(data, direction) == FAILURE)
 		return ;
-	// if (winGame(data) == SUCCESS)
-	// 	return ;
 	collectCoins(data, direction);
 	if (data->map.collected == data->map.count_c)
 		data->map.able_to_exit = 1;
@@ -55,15 +53,13 @@ void	movePlayer(t_data *data, char direction)
 		data->map.p_i = data->map.p_i + 1;
 	else if (direction == 'W')
 		data->map.p_i = data->map.p_i - 1;
-	data->map.map[data->map.p_i][data->map.p_j] = 'P';
-	printf("ce que j'ai pour l'instant :%d | count_c : %d\n", data->map.collected, data->map.count_c);
-	
+	if (data->map.able_to_exit == 1 && data->map.map[data->map.p_i][data->map.p_j] == 'E')
+		winGame(data);
+	data->map.map[data->map.p_i][data->map.p_j] = 'P';	
 }
 
 void	collectCoins(t_data* data, char direction)
 {
-	// static int collected = 0;
-
 	if (direction == 'D' && data->map.map[data->map.p_i][data->map.p_j + 1] == 'C')
 		data->map.collected++;
 	else if (direction == 'A' && data->map.map[data->map.p_i][data->map.p_j - 1] == 'C')
