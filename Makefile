@@ -6,7 +6,7 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/10 18:44:38 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/14 16:17:10 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = 00_Init_Parsing/create_map.c \
 	02_Graphics/render.c \
 	02_Graphics/pixel_utils.c \
 	03_Events/handlers.c \
+	03_Events/moves.c \
 
 OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
 

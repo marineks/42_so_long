@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:10:12 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 13:54:34 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:45:34 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,15 @@
 
 int	render(t_data *data)
 {
-	int 	i; // [y]
+	int 	i;
 	int 	j;
-	int		w; // [x] 
-
+	int		w;
 	
 	if (data->win == NULL) /* if window has been destroyed, we don't want to put the pixel ! */
 		return (FAILURE);
 	i = 0;
 	j = 0;
 	w = 0;
-	
 	while (data->map.map[i])
 	{
 		while (data->map.map[i][j] && data->map.map[i][j] != '\n')
