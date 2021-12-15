@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:52:46 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 08:50:31 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:47:59 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ int	checkMap(t_data *data)
 	}
 	if (checkChars(data) == FAILURE)
 		error_msg(ERRCHARS, data);
+	if (data->map.count_p > 1)
+		error_msg(ERRPLAYER, data);
 	if (checkRectangle(data) == FAILURE)
 		error_msg(ERRREC, data);
 	if (checkEdges(data->map.line_count - 1, data->map.map) == FAILURE)

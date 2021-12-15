@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:16:56 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 09:31:21 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:54:28 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	movePlayer(t_data *data, char direction)
 		|| (data->map.able_to_exit == 0 
 		&& crossExit(data, direction) == SUCCESS))
 		return ;
+	data->count++;
 	collectCoins(data, direction);
 	if (data->map.collected == data->map.count_c)
 		data->map.able_to_exit = 1;
@@ -83,6 +84,7 @@ void	movePlayer(t_data *data, char direction)
 	if (data->map.able_to_exit == 1 && data->map.map[data->map.p_i][data->map.p_j] == 'E')
 		winGame(data);
 	data->map.map[data->map.p_i][data->map.p_j] = 'P';	
+	printf("Moves counter : %d\n", data->count);
 }
 
 void	collectCoins(t_data* data, char direction)

@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 09:36:26 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:53:48 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define GROUND "assets/ground.xpm"
 # define ERROTHER "At least one character of the map is not valid.\n"
 # define ERRCHARS "One of the characters \"0, 1, P, C, E\" is missing.\n"
+# define ERRPLAYER "This is a solo campaign...\n"
 # define ERRREC "The map is not a rectangle.\n"
 # define ERREDGES "The edges of the map are invalid (must be walls -1-)\n"
 
@@ -91,6 +92,7 @@ typedef struct	s_data
 {
 	void	*mlx;
 	void	*win;
+	int		count;
 	t_img	img;
 	t_map	map;
 	
