@@ -6,14 +6,13 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/15 10:28:46 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/15 11:20:02 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # /* ~~~~~~ SOURCES ~~~~~~ */
 SRCS_DIR = ./srcs/
 SRCS = 00_Init_Parsing/create_map.c \
-	00_Init_Parsing/parse_map.c \
 	00_Init_Parsing/init_map.c \
 	01_Errors/check_ber.c \
 	01_Errors/check_map.c \
@@ -21,6 +20,7 @@ SRCS = 00_Init_Parsing/create_map.c \
 	00_Init_Parsing/print_map.c \
 	02_Graphics/render.c \
 	02_Graphics/pixel_utils.c \
+	02_Graphics/mlx_utils.c \
 	03_Events/handlers.c \
 	03_Events/moves.c \
 	03_Events/move_msg.c \

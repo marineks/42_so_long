@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 11:06:01 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:31:26 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,19 @@
 #  define O_DIRECTORY 00200000        /* must be a directory */
 # endif
 
+# define COIN1 "assets/diamond1.xpm"
+# define COIN2 "assets/diamond2.xpm"
+# define COIN3 "assets/diamond3.xpm"
+# define COIN4 "assets/diamond4.xpm"
+# define COIN5 "assets/diamond5.xpm"
+# define COIN6 "assets/diamond6.xpm"
+
+
 # define ERROR -1
 # define FAILURE 1
 # define SUCCESS 0
-// # define IMG_W 48
+# define IMG_SIZE 48
+# define TITRE "Binding of Marine"
 // # define IMG_H 48
 # define RED "\033[0;31m"
 # define RESET "\033[0m"
@@ -55,6 +64,7 @@
 # define COIN "assets/collectible.xpm"
 # define WALL "assets/wall.xpm"
 # define GROUND "assets/ground.xpm"
+# define ERRBER "Argument is not a correct .ber file.\n"
 # define ERROTHER "At least one character of the map is not valid.\n"
 # define ERRCHARS "One of the characters \"0, 1, P, C, E\" is missing.\n"
 # define ERRPLAYER "This is a solo campaign...\n"
@@ -71,8 +81,6 @@ typedef struct s_map
 	int 	count_c;
 	char 	*path;
 	char	**map;
-	int		win_height;
-	int		win_width;
 	int		can_exit;
 	int		collected;
 
@@ -101,6 +109,8 @@ typedef struct	s_data
 	int		steps_count;
 	int		p_i;
 	int		p_j;
+	int		win_height;
+	int		win_width;
 	t_img	img;
 	t_map	map;
 	
@@ -161,6 +171,10 @@ int		render(t_data *data);
 void	render_background(t_img *img, int color);
 
 
+int		init_window(t_data *data);
+void	init_images(t_data *data);
+void	loop_images(t_data data);
+void	destroy_images(t_data data);
 /*
 **
 **  03_EVENTS

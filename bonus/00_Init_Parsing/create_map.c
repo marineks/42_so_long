@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 14:42:52 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 12:21:37 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:38:55 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ void	createMap(char *path, t_data *data)
 	int i;
 	size_t column;
 
-	data->map.line_count = retrieveLineNumber(path);
 	data->map.path = path;
-	
 	// Malloc le double tableau
 	data->map.map = ft_calloc(data->map.line_count + 1, sizeof(char *));
 	if (!(data->map.map))

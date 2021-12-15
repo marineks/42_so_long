@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 12:22:26 by msanjuan         ###   ########.fr       */
+/*   Created: 2021/12/09 14:41:45 by msanjuan          #+#    #+#             */
+/*   Updated: 2021/12/10 17:30:06 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 #include "../../includes/get_next_line.h"
+#include <stdio.h>
 
-void	initMap(t_data *data)
+void	printMap(t_data *data)
 {
-	data->map.count_p = 0;
-	data->map.count_e = 0;
-	data->map.count_c = 0;
-	data->map.collected = 0;
-	data->map.can_exit = 0;
-	data->win_height = data->map.line_count * IMG_SIZE;
-	data->win_width = (ft_strlen(data->map.map[0]) - 1) * IMG_SIZE;
-	data->img.height = IMG_SIZE;
-	data->img.width = IMG_SIZE;
+	for (int row = 0; row < data->map.line_count; row++)
+		printf("map : %s\n", data->map.map[row]);
 }
