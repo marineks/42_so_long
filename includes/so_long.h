@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 18:07:19 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:36:26 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,7 @@ int		handle_btnrealease(t_data *data);
 void	movePlayer(t_data *data, char direction);
 int		checkCollision(t_data *data, char direction);
 void	collectCoins(t_data* data, char direction);
+int		crossExit(t_data* data, char direction);
+int		winGame(t_data *data);
 
 #endif
