@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 10:02:45 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:53:38 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	initMap(t_data *data)
 	data->map.win_width = (ft_strlen(data->map.map[0]) - 1) * 48;
 	data->img.height = 48;
 	data->img.width = 48;
-	
 }

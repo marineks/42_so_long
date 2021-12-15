@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 10:45:43 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 11:06:01 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,5 +178,5 @@ int		checkCollision(t_data *data, char direction);
 void	collectCoins(t_data* data, char direction);
 int		crossExit(t_data* data, char direction);
 int		winGame(t_data *data);
-
+int		checkNextTile(t_data *data, char direction, char tile);
 #endif

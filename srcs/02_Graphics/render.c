@@ -6,28 +6,11 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:10:12 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 17:45:34 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:53:29 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
-
-// void	render_background(t_img *img, int color)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < WINDOW_HEIGHT)
-// 	{
-// 		j = 0;
-// 		while (j < WINDOW_WIDTH)
-// 		{
-// 			img_pix_put(img, j++, i, color);
-// 		}
-// 		++i;
-// 	}
-// }
 
 int	render(t_data *data)
 {
@@ -70,14 +53,3 @@ int	render(t_data *data)
 	// 	/I'm directly passing a structure by value here
 	// render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, BLUE_PIXEL});
 	// render_rect(&data->img, (t_rect){0, 0, 500, 300, RED_PIXEL});
-
-
-	
-	// 	/* mlx_xpm_file_to_image() creates a new image in memory, using the specified xpm_data. 
-	// 	It returns a void * identifier needed to manipulate this image later. */
-	// data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, relative_path, &img_width, &img_height);
-
-		/* Dumps the image inside a specified window at any time to display it on the screen.
-		   Coordinates of the image are (0, 0) because it is covering the whole window. */
-	// mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0); 
-	// }

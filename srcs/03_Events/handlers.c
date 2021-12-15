@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:11:52 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/14 16:24:34 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 11:02:13 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,10 @@ int	handle_keypress(int keysym, t_data *data)
 	if (keysym == XK_Escape)
 	{
 		mlx_destroy_window(data->mlx, data->win);
-		data->win = NULL; // set to NULL after the call to mlx_destroy_window to make the "mlx put pixel" check actually works.
+		data->win = NULL;
 	}
-	else if (keysym == ARROW_TOP || keysym == W)
-		movePlayer(data, 'W');
-	else if (keysym == ARROW_BOT || keysym == S)
-		movePlayer(data, 'S');
-	else if (keysym == ARROW_LEFT || keysym == A)
-		movePlayer(data, 'A');
-	else if (keysym == ARROW_RIGHT || keysym == D)
-		movePlayer(data, 'D');
+	else if (ft_strchr("wasd", keysym))
+		movePlayer(data, keysym);
 	return (0);
 }
 
