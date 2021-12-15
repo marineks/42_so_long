@@ -6,28 +6,63 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:16:56 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 09:54:28 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:31:10 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
+/*
+**	Function which checks whether the player is going to step on a 'Wall' tile
+*/
 int	checkCollision(t_data *data, char direction)
 {
-	if (direction == 'D' && data->map.map[data->map.p_i][data->map.p_j + 1] == '1')
+	if (direction == 'D' && data->map.map[data->p_i][data->p_j + 1] == '1')
 		return (FAILURE);
-	else if (direction == 'A' && data->map.map[data->map.p_i][data->map.p_j - 1] == '1')
+	else if (direction == 'A' && data->map.map[data->p_i][data->p_j - 1] == '1')
 		return (FAILURE);
-	else if (direction == 'S' && data->map.map[data->map.p_i + 1][data->map.p_j] == '1')
+	else if (direction == 'S' && data->map.map[data->p_i + 1][data->p_j] == '1')
 		return (FAILURE);
-	else if (direction == 'W' && data->map.map[data->map.p_i - 1][data->map.p_j] == '1')
+	else if (direction == 'W' && data->map.map[data->p_i - 1][data->p_j] == '1')
 		return (FAILURE);
 	return (SUCCESS);
 }
 
+/*
+**	Function that checks that, when the player moves, the next tile is a coin.
+**	Should it be the case, the counter of all the collected coins increases.
+*/
+void	collectCoins(t_data* data, char direction)
+{
+	if ((direction == 'D' && data->map.map[data->p_i][data->p_j + 1] == 'C')
+		|| (direction == 'A' && data->map.map[data->p_i][data->p_j - 1] == 'C')
+		|| (direction == 'S' && data->map.map[data->p_i + 1][data->p_j] == 'C')
+		|| (direction == 'W' && data->map.map[data->p_i - 1][data->p_j] == 'C'))
+		data->map.collected++;
+}
+
+/*
+**	Function which prevents the player from stepping on the exit when they have
+**	not collected all the coins in the map.
+*/
+int		crossExit(t_data* data, char direction)
+{
+	if ((direction == 'D' && data->map.map[data->p_i][data->p_j + 1] == 'E')
+		|| (direction == 'A' && data->map.map[data->p_i][data->p_j - 1] == 'E')
+		|| (direction == 'S' && data->map.map[data->p_i + 1][data->p_j] == 'E')
+		|| (direction == 'W' && data->map.map[data->p_i - 1][data->p_j] == 'E'))
+		return (SUCCESS);
+	else
+		return (FAILURE);
+}
+
+/*
+**	Function that quits the game when the player steps on the exit and has
+**	collected all the coins in the map.
+*/
 int		winGame(t_data *data)
 {
-	if (data->map.able_to_exit == 1)
+	if (data->map.can_exit == 1)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		data->win = NULL;
@@ -37,64 +72,30 @@ int		winGame(t_data *data)
 		return (FAILURE);
 }
 
-int		crossExit(t_data* data, char direction)
-{
-	if ((direction == 'D' && data->map.map[data->map.p_i][data->map.p_j + 1] == 'E')
-		|| (direction == 'A' && data->map.map[data->map.p_i][data->map.p_j - 1] == 'E')
-		|| (direction == 'S' && data->map.map[data->map.p_i + 1][data->map.p_j] == 'E')
-		|| (direction == 'W' && data->map.map[data->map.p_i - 1][data->map.p_j] == 'E'))
-		return (SUCCESS);
-	else
-		return (FAILURE);
-}
-
-void	lockEnding(t_data* data, char direction)
-{
-	data->map.map[data->map.p_i][data->map.p_j] = 'E';
-	if (direction == 'D')
-		data->map.p_j = data->map.p_j + 1;
-	else if (direction == 'A')
-		data->map.p_j = data->map.p_j - 1;
-	else if (direction == 'S')
-		data->map.p_i = data->map.p_i + 1;
-	else if (direction == 'W')
-		data->map.p_i = data->map.p_i - 1;
-	data->map.map[data->map.p_i][data->map.p_j] = 'P';	
-}
-
+/*
+**	Function which is the "hub" of all the (non)possible moves of the player.
+**	Also counts and display the players's steps counter. 
+*/
 void	movePlayer(t_data *data, char direction)
 {
 	if (checkCollision(data, direction) == FAILURE 
-		|| (data->map.able_to_exit == 0 
-		&& crossExit(data, direction) == SUCCESS))
+		|| (data->map.can_exit == 0 && crossExit(data, direction) == SUCCESS))
 		return ;
-	data->count++;
+	data->steps_count++;
 	collectCoins(data, direction);
 	if (data->map.collected == data->map.count_c)
-		data->map.able_to_exit = 1;
-	data->map.map[data->map.p_i][data->map.p_j] = '0';
+		data->map.can_exit = 1;
+	data->map.map[data->p_i][data->p_j] = '0';
 	if (direction == 'D')
-		data->map.p_j = data->map.p_j + 1;
+		data->p_j++;
 	else if (direction == 'A')
-		data->map.p_j = data->map.p_j - 1;
+		data->p_j--;
 	else if (direction == 'S')
-		data->map.p_i = data->map.p_i + 1;
+		data->p_i++;
 	else if (direction == 'W')
-		data->map.p_i = data->map.p_i - 1;
-	if (data->map.able_to_exit == 1 && data->map.map[data->map.p_i][data->map.p_j] == 'E')
+		data->p_i--;
+	move_msg(data);
+	if (data->map.can_exit == 1 && data->map.map[data->p_i][data->p_j] == 'E')
 		winGame(data);
-	data->map.map[data->map.p_i][data->map.p_j] = 'P';	
-	printf("Moves counter : %d\n", data->count);
-}
-
-void	collectCoins(t_data* data, char direction)
-{
-	if (direction == 'D' && data->map.map[data->map.p_i][data->map.p_j + 1] == 'C')
-		data->map.collected++;
-	else if (direction == 'A' && data->map.map[data->map.p_i][data->map.p_j - 1] == 'C')
-		data->map.collected++;
-	else if (direction == 'S' && data->map.map[data->map.p_i + 1][data->map.p_j] == 'C')
-		data->map.collected++;
-	else if (direction == 'W' && data->map.map[data->map.p_i - 1][data->map.p_j] == 'C')
-		data->map.collected++;
+	data->map.map[data->p_i][data->p_j] = 'P';
 }

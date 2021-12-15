@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:52:46 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 09:47:59 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:03:12 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	checkChars(t_data *data)
 			if (data->map.map[i][j] == 'P')
 			{
 				data->map.count_p++;
-				data->map.p_i = i;
-				data->map.p_j = j;
+				data->p_i = i;
+				data->p_j = j;
 			}
 				
 			else if (data->map.map[i][j] == 'E')

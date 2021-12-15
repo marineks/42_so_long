@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 09:53:48 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:45:43 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@
 # define SUCCESS 0
 // # define IMG_W 48
 // # define IMG_H 48
+# define RED "\033[0;31m"
+# define RESET "\033[0m"
+# define GREEN "\033[1;32m"
+# define PURPLE "\033[1;35m"
+# define CYAN "\033[1;36m"
+# define WHITE "\033[1;37m"
+# define PINK "\033[38;5;206m"
+# define PEACH "\033[38;5;217m"
 # define ARROW_TOP 65362
 # define ARROW_BOT 65364
 # define ARROW_LEFT 65361
@@ -65,9 +73,7 @@ typedef struct s_map
 	char	**map;
 	int		win_height;
 	int		win_width;
-	int		p_i;
-	int		p_j;
-	int		able_to_exit;
+	int		can_exit;
 	int		collected;
 
 }				t_map;
@@ -92,7 +98,9 @@ typedef struct	s_data
 {
 	void	*mlx;
 	void	*win;
-	int		count;
+	int		steps_count;
+	int		p_i;
+	int		p_j;
 	t_img	img;
 	t_map	map;
 	
@@ -163,6 +171,7 @@ int		handle_keypress(int keysym, t_data *data);
 int		handle_resize(t_data *data);
 int		handle_btnrealease(t_data *data);
 
+void	move_msg(t_data *data);
 
 void	movePlayer(t_data *data, char direction);
 int		checkCollision(t_data *data, char direction);
