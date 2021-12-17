@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 15:16:59 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/16 16:49:35 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 		checkMap(&data);
 		init_window(&data);
 		init_images(&data);
+		render(&data);
 		loop_images(data);
 		destroy_images(data);
 		free(data.mlx);

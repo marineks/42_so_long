@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:06:24 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 18:31:26 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/17 15:05:31 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,26 @@
 #  define O_DIRECTORY 00200000        /* must be a directory */
 # endif
 
-# define COIN1 "assets/diamond1.xpm"
-# define COIN2 "assets/diamond2.xpm"
-# define COIN3 "assets/diamond3.xpm"
-# define COIN4 "assets/diamond4.xpm"
-# define COIN5 "assets/diamond5.xpm"
-# define COIN6 "assets/diamond6.xpm"
+# define COIN1 "assets/coin/coin1.xpm"
+# define COIN2 "assets/coin/coin2.xpm"
+# define COIN3 "assets/coin/coin3.xpm"
+# define COIN4 "assets/coin/coin4.xpm"
+# define COIN5 "assets/coin/coin5.xpm"
+
+# define W_TOP "assets/walltop.xpm"
+# define W_BOT "assets/wallbot.xpm"
+# define W_LEFT "assets/wallleft.xpm"
+# define W_RIGHT "assets/wallright.xpm"
+# define C_TL "assets/corner3.xpm"
+# define C_TR "assets/corner4.xpm"
+# define C_BL "assets/corner2.xpm"
+# define C_BR "assets/corner1.xpm"
 
 
 # define ERROR -1
 # define FAILURE 1
 # define SUCCESS 0
-# define IMG_SIZE 48
+# define IMG_SIZE 60
 # define TITRE "Binding of Marine"
 // # define IMG_H 48
 # define RED "\033[0;31m"
@@ -100,6 +108,20 @@ typedef struct s_img
 	int		bits_per_pixel; 
 	int		line_length; // amount of bytes taken by one row of our image. = image_width * (bpp / 8)
 	int		endian; // means that the bytes in computer memory are read in a certain order. Big-endian (BE) and Little-endian (LE).
+	void	*coin1;
+	void	*coin2;
+	void	*coin3;
+	void	*coin4;
+	void	*coin5;
+	void	*coin6;
+	void	*wall_b;
+	void	*wall_t;
+	void	*wall_l;
+	void	*wall_r;
+	void	*corner_tl;
+	void	*corner_tr;
+	void	*corner_bl;
+	void	*corner_br;
 }	t_img;
 
 typedef struct	s_data 
@@ -169,7 +191,7 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 /* ******** Render.c ********/
 int		render(t_data *data);
 void	render_background(t_img *img, int color);
-
+int		coinSprite(t_data *data, int width, int i);
 
 int		init_window(t_data *data);
 void	init_images(t_data *data);

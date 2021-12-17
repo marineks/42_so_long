@@ -6,7 +6,7 @@
 #    By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 12:17:43 by msanjuan          #+#    #+#              #
-#    Updated: 2021/12/15 11:20:02 by msanjuan         ###   ########.fr        #
+#    Updated: 2021/12/16 11:46:15 by msanjuan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,11 +56,22 @@ NAME = so_long
 RM = rm -f
 
 # /* ~~~~~~~ BONUS ~~~~~~~ */
-# BONUS = 
+# BONUS = bonus
 # BONUS_DIR = ./bonus/
-# BONUS_SRCS = 
+# BONUS_SRCS = 00_Init_Parsing/create_map.c \
+# 	00_Init_Parsing/init_map.c \
+# 	01_Errors/check_ber.c \
+# 	01_Errors/check_map.c \
+# 	01_Errors/error_msg.c \
+# 	00_Init_Parsing/print_map.c \
+# 	02_Graphics/render.c \
+# 	02_Graphics/pixel_utils.c \
+# 	02_Graphics/mlx_utils.c \
+# 	03_Events/handlers.c \
+# 	03_Events/moves.c \
+# 	03_Events/move_msg.c \
 
-# B_OBJS = ${addprefix ${BONUS_DIR}, ${BONUS_SRCS:.c=.o}}
+B_OBJS = ${addprefix ${BONUS_DIR}, ${BONUS_SRCS:.c=.o}}
 
 # /* ~~~~~~~ Colors ~~~~~~~ */
 BLACK:="\033[1;30m"
@@ -81,9 +92,10 @@ $(NAME): $(OBJS) $(GNL_OBJS)
 	@echo $(GREEN) "[OK COMPILED]" $(EOC)
 
 # $(BONUS): $(OBJS) $(B_OBJS)
+# 	@make -C ${MLX_DIR}
 # 	@cd $(LIBFT_DIR) && $(MAKE)
 # 	@echo $(CYAN) " - Compiling $@" $(RED)
-# 	@$(CC) $(CFLAGS) $(OBJS) $(B_OBJS) $(BONUS_DIR)bonus_main.c $(IFLAGS) $(LFLAGS) -o $(BONUS)
+# 	@$(CC) $(CFLAGS) $(OBJS) $(B_OBJS) $(GNL_OBJS) $(BONUS_DIR)main.c $(IFLAGS) $(LFLAGS) -o $(BONUS)
 # 	@echo $(GREEN) "[OK COMPILED]" $(EOC)
 
 clean:

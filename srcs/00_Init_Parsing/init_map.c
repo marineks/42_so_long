@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/15 12:22:26 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/16 12:01:26 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	initMap(t_data *data)
 	data->map.count_c = 0;
 	data->map.collected = 0;
 	data->map.can_exit = 0;
+	data->steps_count = 0;
 	data->win_height = data->map.line_count * IMG_SIZE;
 	data->win_width = (ft_strlen(data->map.map[0]) - 1) * IMG_SIZE;
 	data->img.height = IMG_SIZE;
