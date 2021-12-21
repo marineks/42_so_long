@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map_bonus.c                                   :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/21 15:49:20 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 16:12:53 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	init_map(t_data *data)
 	data->map.count_p = 0;
 	data->map.count_e = 0;
 	data->map.count_c = 0;
-	data->map.count_f = 0;
 	data->map.collected = 0;
 	data->map.can_exit = 0;
 	data->steps_count = 0;
