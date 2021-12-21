@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:11:52 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/20 16:02:16 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:29:46 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	handle_keypress_bonus(int keysym, t_data *data)
 	}
 	else if (ft_strchr("wasd", keysym))
 		movePlayer_bonus(data, keysym);
-	else if (data->map.count_f && (keysym ==  ARROW_BOT || keysym == ARROW_TOP 
-		|| keysym == ARROW_LEFT || keysym == ARROW_RIGHT))
+	else if (data->map.count_f && (keysym == ARROW_BOT || keysym == ARROW_TOP
+			|| keysym == ARROW_LEFT || keysym == ARROW_RIGHT))
 		moveFoe_bonus(data, keysym);
 	return (0);
 }
@@ -36,6 +36,6 @@ int	handle_keypress_bonus(int keysym, t_data *data)
 int	handle_btnrealease_bonus(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
-		data->win = NULL;
+	data->win = NULL;
 	return (0);
 }
