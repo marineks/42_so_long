@@ -6,24 +6,25 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/20 14:04:09 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:36:25 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 #include "../includes/get_next_line.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
-	
+	t_data	data;
+
 	if (argc == 2)
 	{
 		if (check_extension_bonus(argv[1]) == FAILURE)
 			error_msg_bonus(ERRBER, &data);
-		createMap_bonus(argv[1], &data);
-		initMap_bonus(&data);
-		checkMap_bonus(&data);
+		create_map_bonus(argv[1], &data);
+		init_map_bonus(&data);
+		check_map_bonus(&data);
+		init_players_bonus(&data);
 		init_window_bonus(&data);
 		init_images_bonus(&data);
 		render_bonus(&data);
@@ -34,4 +35,3 @@ int main(int argc, char **argv)
 			ft_free_bonus(data.map.map);
 	}
 }
-	
