@@ -6,14 +6,14 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/20 15:35:32 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 14:08:00 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long_bonus.h"
 #include "../../includes/get_next_line.h"
 
-void	initMap_bonus(t_data *data)
+void	init_map_bonus(t_data *data)
 {
 	data->map.count_p = 0;
 	data->map.count_e = 0;
