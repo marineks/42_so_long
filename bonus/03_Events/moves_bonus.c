@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:16:56 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/21 11:50:11 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:35:12 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 **	Function which checks the next Tile
 */
-int	checkNextTile_bonus(t_data *data, char direction, char tile)
+int	check_next_tile_bonus(t_data *data, char direction, char tile)
 {
 	if ((direction == 'd' && data->map.map[data->p_i][data->p_j + 1] == tile)
 		|| (direction == 'a' && data->map.map[data->p_i][data->p_j - 1] == tile)
@@ -31,7 +31,7 @@ int	checkNextTile_bonus(t_data *data, char direction, char tile)
 **	Function that checks that, when the player moves, the next tile is a coin.
 **	Should it be the case, the counter of all the collected coins increases.
 */
-void	collectCoins_bonus(t_data* data, char direction)
+void	collect_coins_bonus(t_data *data, char direction)
 {
 	if ((direction == 'd' && data->map.map[data->p_i][data->p_j + 1] == 'C')
 		|| (direction == 'a' && data->map.map[data->p_i][data->p_j - 1] == 'C')
@@ -44,7 +44,7 @@ void	collectCoins_bonus(t_data* data, char direction)
 **	Function that quits the game when the player steps on the exit and has
 **	collected all the coins in the map.
 */
-int		winGame_bonus(t_data *data)
+int	win_game_bonus(t_data *data)
 {
 	if (data->map.can_exit == 1)
 	{
@@ -60,12 +60,12 @@ int		winGame_bonus(t_data *data)
 **	Function which is the "hub" of all the (non)possible moves of the player.
 **	Also counts and display the players's steps counter. 
 */
-void	movePlayer_bonus(t_data *data, char direction)
+void	move_player_bonus(t_data *data, char direction)
 {
 	if (checkNextTile_bonus(data, direction, '1') == SUCCESS
 		|| checkNextTile_bonus(data, direction, 'F') == SUCCESS
-		|| (data->map.can_exit == 0 
-		&& checkNextTile_bonus(data, direction, 'E') == SUCCESS))
+		|| (data->map.can_exit == 0
+			&& checkNextTile_bonus(data, direction, 'E') == SUCCESS))
 		return ;
 	data->steps_count++;
 	collectCoins_bonus(data, direction);
