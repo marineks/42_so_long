@@ -6,7 +6,7 @@
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/21 14:08:00 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 14:23:40 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	init_map_bonus(t_data *data)
 {
+	data->i = 0;
+	data->j = 0;
 	data->map.count_p = 0;
 	data->map.count_e = 0;
 	data->map.count_c = 0;
