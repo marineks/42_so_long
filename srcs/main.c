@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:38:14 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/16 16:49:35 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 16:01:38 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/get_next_line.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
-	
+	t_data	data;
+
 	if (argc == 2)
 	{
 		if (check_extension(argv[1]) == FAILURE)
 			error_msg(ERRBER, &data);
-		createMap(argv[1], &data);
-		initMap(&data);
-		checkMap(&data);
+		create_map(argv[1], &data);
+		init_map(&data);
+		check_map(&data);
+		init_player(&data);
 		init_window(&data);
 		init_images(&data);
 		render(&data);
@@ -34,4 +35,3 @@ int main(int argc, char **argv)
 			ft_free(data.map.map);
 	}
 }
-	

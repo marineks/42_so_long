@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   init_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msanjuan <msanjuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:29:54 by msanjuan          #+#    #+#             */
-/*   Updated: 2021/12/16 12:01:26 by msanjuan         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:49:20 by msanjuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 #include "../../includes/get_next_line.h"
 
-void	initMap(t_data *data)
+void	init_map(t_data *data)
 {
+	data->i = 0;
+	data->j = 0;
 	data->map.count_p = 0;
 	data->map.count_e = 0;
 	data->map.count_c = 0;
+	data->map.count_f = 0;
 	data->map.collected = 0;
 	data->map.can_exit = 0;
 	data->steps_count = 0;
